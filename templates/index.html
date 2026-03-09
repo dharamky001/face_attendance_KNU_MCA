@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Attendance System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7f9;
+            color: #333;
+        }
+        header {
+            background: #007bff;
+            color: white;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin: 40px;
+            gap: 40px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 45%;
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        input[type=text], input[type=email] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .btn-secondary {
+            background: #17a2b8;
+        }
+        .btn-secondary:hover {
+            background: #138496;
+        }
+        .message {
+            text-align: center;
+            font-weight: bold;
+            color: #155724;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <i class="fas fa-user-check"></i> Smart Attendance System
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2><i class="fas fa-user-plus"></i> New Registration</h2>
+            <form method="POST" action="/register">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="text" name="roll" placeholder="Roll Number" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <button type="submit">Register and Capture Face</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-camera"></i> Mark Attendance</h2>
+            <form method="POST" action="/mark">
+                <button class="btn-secondary" type="submit">Start Attendance</button>
+            </form>
+        </div>
+    </div>
+
+    {% if message %}
+        <div class="message">{{ message }}</div>
+    {% endif %}
+</body>
+</html>
